@@ -5,6 +5,7 @@ from .models import todoModel
 from .serializer import ToDoSerializer
 from rest_framework import generics
 import datetime
+from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
 # class getAll(APIView):
@@ -13,7 +14,12 @@ import datetime
 #         serializer=ToDoSerializer(some,many=True)
 #         return Response(serializer.data)
 
-class getAllCreate(generics.ListCreateAPIView):
+class getAll(generics.ListAPIView):
+    queryset=todoModel.objects.all()
+    serializer_class=ToDoSerializer
+    permission_classes=(IsAuthenticated,)
+
+class Create(generics.CreateAPIView):
     queryset=todoModel.objects.all()
     serializer_class=ToDoSerializer
 
