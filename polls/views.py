@@ -53,14 +53,6 @@ class DetailDestroyUpdate(generics.RetrieveUpdateDestroyAPIView):
     
 
 
-class put(APIView):
-    def patch(self,request,*args,**kwargs):
-        x=get_object_or_404(todoModel,id=kwargs['forid'])
-        serializer=ToDoSerializer(x,data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.error)
 
 # class delete(APIView):
 #     def delete(self,request,*args,**kwargs):

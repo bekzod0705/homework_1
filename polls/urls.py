@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import getAll,Create,DetailDestroyUpdate,put,today,lastTen,status
+from .views import getAll,Create,DetailDestroyUpdate,today,lastTen,status
 
 urlpatterns=[
     path('getall/',getAll.as_view()),
