@@ -6,6 +6,7 @@ from .serializer import ToDoSerializer
 from rest_framework import generics
 import datetime
 from rest_framework.permissions import IsAuthenticated
+from .permissions import OwnerPermission
 # Create your views here.
 
 # class getAll(APIView):
@@ -32,7 +33,7 @@ class Create(generics.CreateAPIView):
 class DetailDestroyUpdate(generics.RetrieveUpdateDestroyAPIView):
     queryset=todoModel.objects.all()
     serializer_class=ToDoSerializer
-    
+    permission_classes=(IsAuthenticated,OwnerPermission)
 # class create(APIView):
 #     def post(self,request):
 #         serializer=ToDoSerializer(data=request.data)
